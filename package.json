@@ -1,0 +1,12 @@
+{
+  "name": "nutty-log",
+  "version": "0.0.1",
+  "description": "Logger for cli apps and nutty middlewares",
+  "main": "index.js",
+  "repository": { "type": "git", "url": "https://github.com/nuttyjs/nutty-log.git" },
+  "keywords": [ "pretty", "log", "logger", "logging", "cli", "cmd" ],
+  "author": "Josemi Juanes <josemijuanes@gmail.com>",
+  "homepage": "https://github.com/nuttyjs/nutty-log",
+  "license": "MIT",
+  "dependencies": { "colors": "1.1.2" }
+}
