@@ -45,10 +45,10 @@ Set the minimum log level. Only messages with higher level will be printed in co
 
 ### log.debug(message)
 
-Display a debug message in console.
+Display a debug message in console. The message will be printed
 
 ```javascript
-log.debug('My debug message');
+log.debug('My debug message'); // -->  [2017/01/26 12:00:48] [DEBUG] My debug message
 ```
 
 ### log.info(message)
@@ -56,7 +56,7 @@ log.debug('My debug message');
 Display a info message in console.
 
 ```javascript
-log.info('My info message');
+log.info('My info message'); // -->  [2017/01/26 12:00:48] [INFO] My info message
 ```
 
 ### log.notice(message)
@@ -64,7 +64,7 @@ log.info('My info message');
 Display a notice message in console.
 
 ```javascript
-log.notice('My notice message');
+log.notice('My notice message'); // -->  [2017/01/26 12:00:48] [NOTICE] My notice message
 ```
 
 ### log.warning(message)
@@ -72,24 +72,28 @@ log.notice('My notice message');
 Display a warning message in console.
 
 ```javascript
-log.warning('My warning message');
+log.warning('My warning message'); // -->  [2017/01/26 12:00:48] [WARNING] My warning message
 ```
 
-### log.debug(message)
+### log.error(message)
 
-Display a debug message in console.
+Display a error message in console.
 
 ```javascript
-log.debug('My debug message');
+log.error('My error message'); // -->  [2017/01/26 12:00:48] [ERROR] My error message
 ```
 
-### log.debug(message)
+### log.fatal(message)
 
-Display a debug message in console.
+Display a fatal message in console.
 
 ```javascript
-log.debug('My debug message');
+log.fatal('My fatal message'); // -->  [2017/01/26 12:00:48] [FATAL] My fatal message
 ```
+
+### log.message(level, message)
+
+Returns a string with the structure `[yyyy/mm/dd hh:mm:ss] [LEVEL] message`.
 
 ## Related
 
