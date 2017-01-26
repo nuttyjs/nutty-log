@@ -42,9 +42,6 @@ log.message = function(level, message)
   //Parse the level
   level = level_parse(level);
 
-  //Get the color
-  var color = level_list[level].color;
-
   //Get the actual date
   var d = new Date();
 
@@ -55,7 +52,7 @@ log.message = function(level, message)
   var date_time = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds()).slice(-2);
 
   //Build and return the message
-  return colors.gray(' [' + date_day + ' ' + date_time + ']') + colors[color](' [' + level.toUpperCase() + '] ' + message) + '\n';
+  return ' [' + date_day + ' ' + date_time + '] [' + level.toUpperCase() + '] ' + message + '\n';
 };
 
 //Display a message
@@ -70,8 +67,17 @@ Object.keys(level_list).forEach(function(level)
     //Check the log level
     if(level_list[level].index >= level_list[log._level].index)
     {
-      //Check for display on stderr
-      (level_list[level].print === 'error') ? process.stderr.write(message) : process.stdout.write(message);
+      //Get the level color
+      var color = level_list[level].color;
+
+      //Get the index
+      var index = message.indexOf('] [');
+
+      //Get the message with colors
+      var msg = colors.gray(message.substring(0, index + 1)) + colors[color](message.substring(index + 1));
+
+      //Check for display on stderr or stdout
+      (level_list[level].print === 'error') ? process.stderr.write(msg) : process.stdout.write(msg);
     }
 
     //Return the message
