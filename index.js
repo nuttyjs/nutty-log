@@ -6,12 +6,12 @@ var log = {};
 
 //Add the log levels
 var level_list = {};
-level_list.fatal = { index: 0, color: 'red', print: 'error' };
-level_list.error = { index: 1, color: 'red', print: 'error' };
-level_list.warning = { index: 2, color: 'yellow', print: 'error' };
-level_list.notice = { index: 3, color: 'blue', print: 'out' };
-level_list.info = { index: 4, color: 'green', print: 'out' };
-level_list.debug = { index: 5, color: 'gray', print: 'out' };
+level_list.fatal = { index: 5, color: 'red', print: 'error' };
+level_list.error = { index: 4, color: 'red', print: 'error' };
+level_list.warning = { index: 3, color: 'yellow', print: 'error' };
+level_list.notice = { index: 2, color: 'blue', print: 'out' };
+level_list.info = { index: 1, color: 'green', print: 'out' };
+level_list.debug = { index: 0, color: 'gray', print: 'out' };
 
 //Parse a log level
 var level_parse = function(level)
@@ -68,7 +68,7 @@ Object.keys(level_list).forEach(function(level)
     var message = log.message(level, text);
 
     //Check the log level
-    if(level_list[level].index <= level_list[log._level].index)
+    if(level_list[level].index >= level_list[log._level].index)
     {
       //Check for display on stderr
       (level_list[level].print === 'error') ? process.stderr.write(message) : process.stdout.write(message);
