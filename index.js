@@ -93,7 +93,6 @@ log.json = function(level, obj)
 
   //Output messages
   var out = [];
-  console.log(keys);
 
   //Read all the keys
   for(var i = 0; i < keys.length; i++)
