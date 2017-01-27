@@ -54,7 +54,7 @@ log.debug('My debug message'); // -->  [2017/01/26 12:00:48] [DEBUG] My debug me
 
 ### log.info(message)
 
-Display a info message in console.
+Display an info message in console.
 
 ```javascript
 log.info('My info message'); // -->  [2017/01/26 12:00:48] [INFO] My info message
@@ -78,7 +78,7 @@ log.warning('My warning message'); // -->  [2017/01/26 12:00:48] [WARNING] My wa
 
 ### log.error(message)
 
-Display a error message in console.
+Display an error message in `process.stderr`.
 
 ```javascript
 log.error('My error message'); // -->  [2017/01/26 12:00:48] [ERROR] My error message
@@ -86,7 +86,7 @@ log.error('My error message'); // -->  [2017/01/26 12:00:48] [ERROR] My error me
 
 ### log.fatal(message)
 
-Display a fatal message in console.
+Display a fatal message in `process.stderr`.
 
 ```javascript
 log.fatal('My fatal message'); // -->  [2017/01/26 12:00:48] [FATAL] My fatal message
