@@ -85,5 +85,47 @@ Object.keys(level_list).forEach(function(level)
   };
 });
 
+//Print a json in console
+log.json = function(level, obj)
+{
+  //Get the object keys
+  var keys = (Array.isArray(obj) === false) ? Object.keys(obj) : Array.apply(null, { length: obj.length }).map(Number.call, Number);
+
+  //Output messages
+  var out = [];
+  console.log(keys);
+
+  //Read all the keys
+  for(var i = 0; i < keys.length; i++)
+  {
+    //Get the key
+    var key = keys[i];
+
+    //Get the value
+    var value = obj[key];
+
+    //Check the value
+    if(typeof value === 'object'){ value = JSON.stringify(value); }
+
+    //Print the message in console and return
+    var message = log[level](key + ' : ' + value);
+
+    //Save the message
+    out.push(message);
+  }
+
+  //Return the messages list
+  return out.join('');
+};
+
+//Parse a log message and return an object with the log information
+log.parse = function(msg)
+{
+  //Initialize the object
+  var obj = { date: '', level: '', message: '' };
+
+  //
+};
+
 //Exports to node
 module.exports = log;
