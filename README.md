@@ -70,7 +70,7 @@ log.notice('My notice message'); // -->  [2017/01/26 12:00:48] [NOTICE] My notic
 
 ### log.warning(message)
 
-Display a warning message in console.
+Display a warning message in `process.stderr`.
 
 ```javascript
 log.warning('My warning message'); // -->  [2017/01/26 12:00:48] [WARNING] My warning message
