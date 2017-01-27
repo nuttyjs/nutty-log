@@ -96,6 +96,23 @@ log.fatal('My fatal message'); // -->  [2017/01/26 12:00:48] [FATAL] My fatal me
 
 Returns a string with the structure `[yyyy/mm/dd hh:mm:ss] [LEVEL] message`.
 
+### log.json(level, obj)
+
+Prints a JSON object in console.
+
+```javascript
+//Object to print in console
+var obj = { key1: 'My value1', key2: [ 1, 2, 3 ], key3: true };
+
+//Print in console
+log.json('warning', obj);
+
+//Will print:
+// [2017/01/27 15:28:19] [WARNING] key1 : My value1
+// [2017/01/27 15:28:19] [WARNING] key2 : [1,2,3]
+// [2017/01/27 15:28:19] [WARNING] key3 : true
+```
+
 ## Related
 
 - [nutty](https://github.com/nuttyjs/nutty) A small and minimal CLI framework.
