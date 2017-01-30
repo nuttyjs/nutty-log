@@ -5,22 +5,22 @@ var colors = require('colors/safe');
 var log = {};
 
 //Add the log levels
-var level_list = {};
-level_list.fatal = { index: 5, color: 'red', print: 'error' };
-level_list.error = { index: 4, color: 'red', print: 'error' };
-level_list.warning = { index: 3, color: 'yellow', print: 'error' };
-level_list.notice = { index: 2, color: 'blue', print: 'out' };
-level_list.info = { index: 1, color: 'green', print: 'out' };
-level_list.debug = { index: 0, color: 'gray', print: 'out' };
+log.levels = {};
+log.levels.fatal = { index: 5, color: 'red', print: 'error' };
+log.levels.error = { index: 4, color: 'red', print: 'error' };
+log.levels.warning = { index: 3, color: 'yellow', print: 'error' };
+log.levels.notice = { index: 2, color: 'blue', print: 'out' };
+log.levels.info = { index: 1, color: 'green', print: 'out' };
+log.levels.debug = { index: 0, color: 'gray', print: 'out' };
 
 //Parse a log level
-var level_parse = function(level)
+log._parse = function(level)
 {
   //Convert to lower case
   level = level.toLowerCase();
 
   //Check for no level
-  if(typeof level_list[level] === 'undefined'){ return 'debug'; }
+  if(typeof log.levels[level] === 'undefined'){ return 'debug'; }
 
   //Return the level
   return level;
@@ -33,14 +33,14 @@ log._level = 'debug';
 log.level = function(level)
 {
   //Save the log level
-  log._level = level_parse(level);
+  log._level = log._parse(level);
 };
 
 //Build a log message
 log.message = function(level, message)
 {
   //Parse the level
-  level = level_parse(level);
+  level = log._parse(level);
 
   //Get the actual date
   var d = new Date();
@@ -56,7 +56,7 @@ log.message = function(level, message)
 };
 
 //Display a message
-Object.keys(level_list).forEach(function(level)
+Object.keys(log.levels).forEach(function(level)
 {
   //Add the log level
   log[level] = function(text)
@@ -65,10 +65,10 @@ Object.keys(level_list).forEach(function(level)
     var message = log.message(level, text);
 
     //Check the log level
-    if(level_list[level].index >= level_list[log._level].index)
+    if(log.levels[level].index >= log.levels[log._level].index)
     {
       //Get the level color
-      var color = level_list[level].color;
+      var color = log.levels[level].color;
 
       //Get the index
       var index = message.indexOf('] [');
@@ -77,7 +77,7 @@ Object.keys(level_list).forEach(function(level)
       var msg = colors.gray(message.substring(0, index + 1)) + colors[color](message.substring(index + 1));
 
       //Check for display on stderr or stdout
-      (level_list[level].print === 'error') ? process.stderr.write(msg) : process.stdout.write(msg);
+      (log.levels[level].print === 'error') ? process.stderr.write(msg) : process.stdout.write(msg);
     }
 
     //Return the message
@@ -115,15 +115,6 @@ log.json = function(level, obj)
 
   //Return the messages list
   return out.join('');
-};
-
-//Parse a log message and return an object with the log information
-log.parse = function(msg)
-{
-  //Initialize the object
-  var obj = { date: '', level: '', message: '' };
-
-  //
 };
 
 //Exports to node
