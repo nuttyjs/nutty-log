@@ -52,7 +52,7 @@ log.message = function(level, message)
   var date_time = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds()).slice(-2);
 
   //Build and return the message
-  return ' [' + date_day + ' ' + date_time + '] [' + level.toUpperCase() + '] ' + message + '\n';
+  return '[' + date_day + ' ' + date_time + '] [' + level.toUpperCase() + '] ' + message + '\n';
 };
 
 //Display a message
