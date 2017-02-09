@@ -1,6 +1,6 @@
 {
   "name": "nutty-log",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Logger for cli apps and nutty middlewares",
   "main": "index.js",
   "repository": { "type": "git", "url": "https://github.com/nuttyjs/nutty-log.git" },
