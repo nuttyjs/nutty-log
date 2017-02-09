@@ -96,21 +96,28 @@ log.fatal('My fatal message'); // -->  [2017/01/26 12:00:48] [FATAL] My fatal me
 
 Returns a string with the structure `[yyyy/mm/dd hh:mm:ss] [LEVEL] message`.
 
-### log.json(level, obj)
+### log.parse(messages)
 
-Prints a JSON object in console.
+Returns an array with the parsed messages in JSON format.
 
 ```javascript
-//Object to print in console
-var obj = { key1: 'My value1', key2: [ 1, 2, 3 ], key3: true };
-
 //Print in console
-log.json('warning', obj);
+var msg1 = log.json('warning', 'This is my warning');
+// [2017/01/27 15:28:19] [WARNING] This is my warning\n
 
-//Will print:
-// [2017/01/27 15:28:19] [WARNING] key1 : My value1
-// [2017/01/27 15:28:19] [WARNING] key2 : [1,2,3]
-// [2017/01/27 15:28:19] [WARNING] key3 : true
+var msg2 = log.json('error', 'This is my error');
+// [2017/01/27 15:28:19] [ERROR] This is my error\n
+
+//Full message
+var message = msg1 + msg2;
+// [2017/01/27 15:28:19] [WARNING] This is my warning\n[2017/01/27 15:28:19] [ERROR] This is my error\n
+
+//PArse the message
+log.parse(message)
+//  [
+//    { time: '2017/01/27 15:28:19', level: 'warning', message: 'This is my warning' },
+//    { time: '2017/01/27 15:28:19', level: 'error', message: 'This is my error' },
+//  ]
 ```
 
 ## Related
