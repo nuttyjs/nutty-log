@@ -112,7 +112,7 @@ var msg2 = log.json('error', 'This is my error');
 var message = msg1 + msg2;
 // [2017/01/27 15:28:19] [WARNING] This is my warning\n[2017/01/27 15:28:19] [ERROR] This is my error\n
 
-//PArse the message
+//Parse the message
 log.parse(message)
 //  [
 //    { time: '2017/01/27 15:28:19', level: 'warning', message: 'This is my warning' },
